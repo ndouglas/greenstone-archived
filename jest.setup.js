@@ -1,0 +1,1 @@
+import '@/jest/extend-expect';

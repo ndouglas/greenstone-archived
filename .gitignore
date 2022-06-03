@@ -1,3 +1,6 @@
+# FFS Apple
+.DS_Store
+
 # Build directory.
 ./dist
 
