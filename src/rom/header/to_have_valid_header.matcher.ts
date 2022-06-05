@@ -13,7 +13,7 @@ declare global {
 }
 
 const toHaveValidHeader = (received: string) => {
-  const pass = validator.validateFile(received);
+  const pass = validator.validateFileHeader(received);
   if (pass) {
     return {
       message: () => `expected ${received} not to have a valid header (`,

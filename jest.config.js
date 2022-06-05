@@ -10,7 +10,7 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jest-environment-node',
-  collectCoverageFrom: ['src/**/*.{js,ts}', '!**/**.test.{js,ts}', '!**/**.matcher.{js,ts}'],
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/**.test.{js,jsx,ts,tsx}', '!**/**.matcher.{js,jsx,ts,tsx}'],
   coverageThreshold: {
     global: {
       statements: 29,

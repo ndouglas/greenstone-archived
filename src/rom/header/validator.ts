@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { buffer } from 'stream/consumers';
 
 /**
  * The iNES "Magic String".
@@ -13,14 +14,20 @@ const getFileMagicString = (path: string): string => getBufferMagicString(fs.rea
 
 const getBufferMagicString = (buffer: Buffer): string => buffer.toString('hex', 0, 4);
 
-const validateBuffer = (buffer: Buffer): boolean => getBufferMagicString(buffer) === NES_MAGIC_STRING;
+const validateBufferHeader = (buffer: Buffer): boolean => getBufferMagicString(buffer) === NES_MAGIC_STRING;
 
-const validateFile = (path: string): boolean => validateBuffer(fs.readFileSync(path));
+const validateFileHeader = (path: string): boolean => validateBufferHeader(fs.readFileSync(path));
+
+const getFileHeader = (path: string): Buffer => getBufferHeader(fs.readFileSync(path));
+
+const getBufferHeader = (buffer: Buffer): Buffer => buffer.slice(0, 16);
 
 export default {
   NES_MAGIC_STRING,
   getBufferMagicString,
   getFileMagicString,
-  validateBuffer,
-  validateFile,
+  validateBufferHeader,
+  validateFileHeader,
+  getFileHeader,
+  getBufferHeader,
 };
